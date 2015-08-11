@@ -12,7 +12,6 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginEntry;
 import org.apache.cordova.PluginResult;
-//import org.apache.cordova.ScrollEvent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -106,9 +105,6 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
   private float density;
   private HashMap<String, Bundle> bufferForLocationDialog = new HashMap<String, Bundle>();
   
-  /*private enum EVENTS {
-    onScrollChanged
-  }*/
   private enum TEXT_STYLE_ALIGNMENTS {
     left, center, right
   }
@@ -594,46 +590,6 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
     callbackContext.success(msg);
     return true;
   }
-
-  /*@Override
-  public Object onMessage(String id, Object data) {
-    EVENTS event = null;
-    try {
-      event = EVENTS.valueOf(id);
-    }catch(Exception e) {}
-    
-    if (event == null) {
-      return null;
-    }
-    
-    switch(event) {
-    case onScrollChanged:
-      ScrollEvent scrollEvent = (ScrollEvent)data;
-      if (mPluginLayout != null) {
-        mPluginLayout.scrollTo(scrollEvent.nl, scrollEvent.nt);
-        if (mapDivLayoutJSON != null) {
-          try {
-            float divW = contentToView(mapDivLayoutJSON.getLong("width"));
-            float divH = contentToView(mapDivLayoutJSON.getLong("height"));
-            float divLeft = contentToView(mapDivLayoutJSON.getLong("left"));
-            float divTop = contentToView(mapDivLayoutJSON.getLong("top"));
-    
-            mPluginLayout.setDrawingRect(
-                divLeft,
-                divTop - scrollEvent.nt, 
-                divLeft + divW, 
-                divTop + divH - scrollEvent.nt);
-          } catch (JSONException e) {
-            e.printStackTrace();
-          }
-        }
-      }
-      
-      break;
-    }
-    
-    return null;
-  }*/
 
   private void closeWindow() {
     try {
