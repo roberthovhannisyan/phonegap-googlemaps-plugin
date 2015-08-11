@@ -17,7 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import plugin.http.request.HttpRequest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -136,49 +135,6 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
     activity = cordova.getActivity();
     density = Resources.getSystem().getDisplayMetrics().density;
     root = (ViewGroup) webView.getView().getParent();
-
-    // Is this release build version?
-    boolean isRelease = false;
-    try {
-      PackageManager manager = activity.getPackageManager();
-      ApplicationInfo appInfo = manager.getApplicationInfo(activity.getPackageName(), 0);
-      isRelease = !((appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) == ApplicationInfo.FLAG_DEBUGGABLE);
-    } catch (Exception e) {}
-    
-    Log.i("CordovaLog", "This app uses phonegap-googlemaps-plugin version " + PLUGIN_VERSION);
-
-    if (!isRelease) {
-      cordova.getThreadPool().execute(new Runnable() {
-        @Override
-        public void run() {
-  
-          try {
-            
-            JSONArray params = new JSONArray();
-            params.put("get");
-            params.put("http://plugins.cordova.io/api/plugin.google.maps");
-            HttpRequest httpReq = new HttpRequest();
-            httpReq.initialize(cordova, null);
-            httpReq.execute("execute", params, new CallbackContext("version_check", webView) {
-              @Override
-              public void sendPluginResult(PluginResult pluginResult) {
-                if (pluginResult.getStatus() == PluginResult.Status.OK.ordinal()) {
-                  try {
-                    JSONObject result = new JSONObject(pluginResult.getStrMessage());
-                    JSONObject distTags = result.getJSONObject("dist-tags");
-                    String latestVersion = distTags.getString("latest");
-                    if (latestVersion.equals(PLUGIN_VERSION) == false) {
-                      Log.i("CordovaLog", "phonegap-googlemaps-plugin version " + latestVersion + " is available.");
-                    }
-                  } catch (JSONException e) {}
-                  
-                }
-              }
-            });
-          } catch (Exception e) {}
-        }
-      });
-    }
 
     cordova.getActivity().runOnUiThread(new Runnable() {
       @SuppressLint("NewApi")

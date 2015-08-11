@@ -18,8 +18,6 @@
       <engine name="cordova" version=">=3.5.0" />
     </engines>
     
-    <dependency id="plugin.http.request" />
-    
     <!-- android -->
     <platform name="android">
         <preference name="API_KEY_FOR_ANDROID" />
@@ -114,6 +112,9 @@
             <feature name="Geocoder">
                 <param name="ios-package" value="Geocoder" />
             </feature>
+            <feature name="HttpRequest">
+                <param name="ios-package" value="HttpRequest" />
+            </feature>
         </config-file>
 
         <header-file src="src/ios/GoogleMaps/Circle.h" />
@@ -156,6 +157,10 @@
         <source-file src="src/ios/GoogleMaps/MyPluginLayerDebugView.m" />
         <header-file src="src/ios/GoogleMaps/MyPluginScrollView.h" />
         <source-file src="src/ios/GoogleMaps/MyPluginScrollView.m" />
+        <header-file src="src/ios/HttpRequest/HttpRequest.h" target-dir="HttpRequest" />
+        <source-file src="src/ios/HttpRequest/HttpRequest.m" target-dir="HttpRequest" />
+        <header-file src="src/ios/HttpRequest/R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.h" target-dir="HttpRequest/R9HTTPRequest" />
+        <source-file src="src/ios/HttpRequest/R9HTTPRequest/R9HTTPRequest/R9HTTPRequest.m" target-dir="HttpRequest/R9HTTPRequest" />
 
         <config-file target="*-Info.plist" parent="Google Maps API Key">
             <string>$API_KEY_FOR_IOS</string>

@@ -16,9 +16,6 @@
   self.mapCtrl.isFullScreen = YES;
   self.locationCommandQueue = [[NSMutableArray alloc] init];
   
-  [self versionCheck];
-  
-  
   self.pluginLayer = [[MyPluginLayer alloc] initWithFrame:self.webView.frame];
   self.pluginLayer.backgroundColor = [UIColor whiteColor];
   self.pluginLayer.webView = self.webView;
@@ -65,59 +62,6 @@
   } else {
     [GMSServices provideAPIKey:APIKey];
   }
-}
-/**
- * @Private
- * Execute the method of other plugin class internally.
- */
--(void)versionCheck
-{
-  NSString *PLUGIN_VERSION = @"1.2.5";
-  NSLog(@"This app uses phonegap-googlemaps-plugin version %@", PLUGIN_VERSION);
-  
-  if ([PluginUtil isInDebugMode] == NO || [PluginUtil isIOS7_OR_OVER] == NO) {
-    return;
-  }
-  
-  BOOL isNetworkAvailable = NO;
-  MyReachability *reachablity = [MyReachability reachabilityForInternetConnection];
-  NetworkStatus status = [reachablity currentReachabilityStatus];
-  switch (status) {
-  case ReachableViaWiFi:
-  case ReachableViaWWAN:
-    isNetworkAvailable = YES;
-    break;
-  case NotReachable:
-    NSLog(@"[info] Can not connect to the internet");
-    break;
-  default:
-    break;
-  }
-  if (isNetworkAvailable == NO) {
-    return;
-  }
-  
-  
-  dispatch_queue_t gueue = dispatch_queue_create("plugins.google.maps.version_check", NULL);
-  dispatch_async(gueue, ^{
-    NSURL *URL = [NSURL URLWithString:@"http://plugins.cordova.io/api/plugin.google.maps"];
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:URL];
-    
-    [request setHTTPMethod:@"GET"];
-    [request setTimeoutInterval:5];
-    [request setFailedHandler:^(NSError *error){}];
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-      NSData *jsonData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
-      NSError *error;
-      NSMutableDictionary *info = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-      NSDictionary *distTags = [info objectForKey:@"dist-tags"];
-      NSString *latestVersion = [distTags objectForKey:@"latest"];
-      if ([PLUGIN_VERSION isEqualToString:latestVersion] == NO) {
-        NSLog(@"phonegap-googlemaps-plugin version %@ is available.", latestVersion);
-      }
-    }];
-    [request startRequest];
-  });
 }
 
 -(void)viewDidLayoutSubviews {
