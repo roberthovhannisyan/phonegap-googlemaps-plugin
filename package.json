@@ -1,0 +1,22 @@
+{
+    "version": "1.2.5",
+    "name": "am.armsoft.plugins.googlemaps",
+    "cordova_name": "phonegap-googlemaps-plugin",
+    "description": "Google Maps native SDK for Android and iOS",
+    "license": "Apache 2.0",
+    "keywords": [
+        "google",
+        "maps",
+        "geo"
+    ],
+    "platforms": [
+        "android",
+        "ios"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.5.0"
+        }
+    ]
+}

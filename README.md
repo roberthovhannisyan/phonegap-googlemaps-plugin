@@ -20,7 +20,7 @@ cordova plugin add https://github.com/roberthovhannisyan/phonegap-googlemaps-plu
 ### PhoneGap Build
 Add this to your config.xml:
 ```xml
-<gap:plugin name="am.armsoft.plugin.googlemaps" source="npm">
+<gap:plugin name="am.armsoft.plugins.googlemaps" source="npm">
     <param name="API_KEY_FOR_ANDROID" value="YOUR_API_KEY_FOR_ANDROID" />
     <param name="API_KEY_FOR_IOS" value="YOUR_API_KEY_FOR_IOS" />
 </gap:plugin>
