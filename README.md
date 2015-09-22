@@ -9,7 +9,7 @@ This plugin helps you leverage [Google Maps Android SDK v2](https://developers.g
 ### Cordova CLI
 Use the following command to install from npmjs repository (requires cordova 5.0+)
 ```
-cordova plugin am.armsoft.plugin.googlemaps --variable API_KEY_FOR_ANDROID="YOUR_API_KEY_FOR_ANDROID" --variable API_KEY_FOR_IOS="YOUR_API_KEY_FOR_IOS"
+cordova plugin cordova-plugin-armsoft-googlemaps --variable API_KEY_FOR_ANDROID="YOUR_API_KEY_FOR_ANDROID" --variable API_KEY_FOR_IOS="YOUR_API_KEY_FOR_IOS"
 ```
 
 To fetch the latest version from GitHub, use
@@ -20,7 +20,7 @@ cordova plugin add https://github.com/roberthovhannisyan/phonegap-googlemaps-plu
 ### PhoneGap Build
 Add this to your config.xml:
 ```xml
-<gap:plugin name="am.armsoft.plugins.googlemaps" source="npm">
+<gap:plugin name="cordova-plugin-armsoft-googlemaps" source="npm">
     <param name="API_KEY_FOR_ANDROID" value="YOUR_API_KEY_FOR_ANDROID" />
     <param name="API_KEY_FOR_IOS" value="YOUR_API_KEY_FOR_IOS" />
 </gap:plugin>
