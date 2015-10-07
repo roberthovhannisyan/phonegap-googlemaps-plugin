@@ -53,8 +53,8 @@ public class MyPluginLayout extends FrameLayout  {
     this.root = (ViewGroup) webView.getView().getParent();
     this.context = webView.getContext();
     webView.getView().setBackgroundColor(Color.TRANSPARENT);
-    if (VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-      webView.getView().setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+    if (Build.VERSION.SDK_INT >= 21){
+      webView.getView().setLayerType(View.LAYER_TYPE_HARDWARE, null);
     }
     frontLayer = new FrontLayerLayout(this.context);
     

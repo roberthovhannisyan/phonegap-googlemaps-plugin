@@ -120,7 +120,6 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
   private ViewGroup root;
   private final int CLOSE_LINK_ID = 0x7f999990;  //random
   private final int LICENSE_LINK_ID = 0x7f99991; //random
-  private final String PLUGIN_VERSION = "1.2.5";
   private MyPluginLayout mPluginLayout = null;
   public boolean isDebug = false;
   private GoogleApiClient googleApiClient = null;
@@ -145,8 +144,8 @@ public class GoogleMaps extends CordovaPlugin implements View.OnClickListener, O
             e.printStackTrace();
           }
        */
-        if (Build.VERSION.SDK_INT >= 11){
-          webView.getView().setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        if (Build.VERSION.SDK_INT >= 21){
+          webView.getView().setLayerType(View.LAYER_TYPE_HARDWARE, null);
         }
         
         root.setBackgroundColor(Color.WHITE);
