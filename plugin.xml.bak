@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-armsoft-googlemaps" 
-        version="1.3.0">
+        version="1.4.0">
     
     <name>phonegap-googlemaps-plugin</name>
     <description>Google Maps native SDK for Android and iOS</description>
@@ -11,7 +11,8 @@
     <keywords>google,maps,geo</keywords>
     
     <engines>
-      <engine name="cordova" version=">=3.5.0" />
+      <engine name="cordova-android" version=">=5.1.0" />
+      <engine name="cordova-ios" version=">=4.0.0" />
     </engines>
     
     <js-module name="phonegap-googlemaps-plugin" src="www/googlemaps-cdv-plugin.js">
@@ -34,7 +35,11 @@
             </feature>
         </config-file>
 
-        <dependency id="com.google.play.services" url="https://github.com/roberthovhannisyan/cordova-plugin-google-play-services" commit="v25.0.0" />
+         
+         <framework src="com.google.android.gms:play-services-location:10.2+" />
+         <framework src="com.google.android.gms:play-services-maps:10.2+" />
+         <framework src="com.google.android.gms:play-services-places:10.2+" />
+         <framework src="com.google.android.gms:play-services-nearby:10.2+" />
     
         <!-- plugin src files -->
         <source-file src="src/android/plugin/google/maps/AsyncLicenseInfo.java" target-dir="src/plugin/google/maps" />
@@ -174,6 +179,6 @@
           </array>
         </config-file>
         
-        <dependency id="com.googlemaps.ios" url="https://github.com/roberthovhannisyan/cordova-plugin-googlemaps-ios-sdk" commit="v1.10.1" />
+        
     </platform>
 </plugin>

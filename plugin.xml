@@ -11,8 +11,7 @@
     <keywords>google,maps,geo</keywords>
     
     <engines>
-      <engine name="cordova-android" version=">=5.1.0" />
-      <engine name="cordova-ios" version=">=4.0.0" />
+      <engine name="cordova" version=">=3.5.0" />
     </engines>
     
     <js-module name="phonegap-googlemaps-plugin" src="www/googlemaps-cdv-plugin.js">
